@@ -33,20 +33,58 @@ It wrote the code, ran away, and now the game is unplayable.
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User enters a guess of 37
+2. Game returns "Too Low"
+3. User enters a guess of 79 → "Too High"
+4. Score updates correctly after each guess
+5. Hint correctly indicates what to guess
+6. Game ends after the correct guess
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+python -m pytest test_game_logic.py -v
+=============================================== test session starts ===============================================
+platform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\Acer\AppData\Local\Python\pythoncore-3.13-64\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Acer\OneDrive\Desktop\AI110\ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.13.0
+collected 30 items                                                                                                 
+
+test_game_logic.py::test_too_high_tells_you_to_go_lower PASSED                                               [  3%]
+test_game_logic.py::test_too_low_tells_you_to_go_higher PASSED                                               [  6%]
+test_game_logic.py::test_correct_guess_wins PASSED                                                           [ 10%]
+test_game_logic.py::test_comparison_is_numeric_not_lexicographic[9-10-Too Low] PASSED                        [ 13%]
+test_game_logic.py::test_comparison_is_numeric_not_lexicographic[10-9-Too High] PASSED                       [ 16%]
+test_game_logic.py::test_comparison_is_numeric_not_lexicographic[100-2-Too High] PASSED                      [ 20%]
+test_game_logic.py::test_comparison_is_numeric_not_lexicographic[2-100-Too Low] PASSED                       [ 23%]
+test_game_logic.py::test_check_guess_handles_ints_consistently PASSED                                        [ 26%]
+test_game_logic.py::test_first_try_win_scores_full_100 PASSED                                                [ 30%]
+test_game_logic.py::test_win_score_decreases_by_10_per_attempt PASSED                                        [ 33%]
+test_game_logic.py::test_win_score_floored_at_10 PASSED                                                      [ 36%]
+test_game_logic.py::test_win_adds_to_existing_score PASSED                                                   [ 40%]
+test_game_logic.py::test_too_high_always_penalizes[1] PASSED                                                 [ 43%]
+test_game_logic.py::test_too_high_always_penalizes[2] PASSED                                                 [ 46%]
+test_game_logic.py::test_too_high_always_penalizes[3] PASSED                                                 [ 50%]
+test_game_logic.py::test_too_high_always_penalizes[4] PASSED                                                 [ 53%]
+test_game_logic.py::test_too_low_always_penalizes[1] PASSED                                                  [ 56%]
+test_game_logic.py::test_too_low_always_penalizes[2] PASSED                                                  [ 60%]
+test_game_logic.py::test_too_low_always_penalizes[3] PASSED                                                  [ 63%]
+test_game_logic.py::test_too_low_always_penalizes[4] PASSED                                                  [ 66%]
+test_game_logic.py::test_high_and_low_penalties_are_equal PASSED                                             [ 70%]
+test_game_logic.py::test_get_range_for_difficulty[Easy-expected0] PASSED                                     [ 73%]
+test_game_logic.py::test_get_range_for_difficulty[Normal-expected1] PASSED                                   [ 76%]
+test_game_logic.py::test_get_range_for_difficulty[Hard-expected2] PASSED                                     [ 80%]
+test_game_logic.py::test_get_range_for_difficulty[Unknown-expected3] PASSED                                  [ 83%]
+test_game_logic.py::test_parse_guess_valid PASSED                                                            [ 86%]
+test_game_logic.py::test_parse_guess_float_is_truncated PASSED                                               [ 90%]
+test_game_logic.py::test_parse_guess_empty PASSED                                                            [ 93%]
+test_game_logic.py::test_parse_guess_non_numeric PASSED                                                      [ 96%]
+test_game_logic.py::test_parse_guess_out_of_range PASSED                                                     [100%]
+
+=============================================== 30 passed in 0.26s
 ```
 
 ## 🚀 Stretch Features
